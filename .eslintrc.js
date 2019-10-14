@@ -29,9 +29,6 @@ module.exports = {
       "ignoreUrls": true,
       "code": 120
     }],
-    "jest/no-identical-title": "error",
-    "jest/prefer-to-have-length": "warn",
-    "jest/valid-expect": "error",
     "no-shadow": 0,
     "class-methods-use-this": 0,
     "camelcase": 0,
