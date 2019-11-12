@@ -1,6 +1,6 @@
 {
-  "short_name": "Circle Drawer",
-  "name": "Circle Drawing App",
+  "short_name": "Bezier Drawer",
+  "name": "Bezier Drawing App",
   "icons": [
     {
       "src": "favicon.ico",
