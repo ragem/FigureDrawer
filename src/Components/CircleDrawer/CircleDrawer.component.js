@@ -99,6 +99,68 @@ class CircleDrawer extends PureComponent {
         }
     }
 
+    drawellispe(rx, ry, xc, yc) {
+        let dx; let dy; let d1; let d2; let x; let y;
+        x = 0;
+        y = ry;
+        const ctx = this.canvas.current.getContext('2d');
+        d1 = (ry * ry) - (rx * rx * ry)
+        + (0.25 * rx * rx);
+        dx = 2 * ry * ry * x;
+        dy = 2 * rx * rx * y;
+
+        while (dx < dy) {
+            console.log(`${x + xc},`, y + yc);
+            console.log(`${-x + xc},`, y + yc);
+            console.log(`${x + xc},`, -y + yc);
+            console.log(`${-x + xc},`, -y + yc);
+            ctx.fillRect(x + xc, y + yc, 1, 1);
+            ctx.fillRect(-x + xc, y + yc, 1, 1);
+            ctx.fillRect(x + xc, -y + yc, 1, 1);
+            ctx.fillRect(-x + xc, -y + yc, 1, 1);
+
+            if (d1 < 0) {
+                x++;
+                dx += (2 * ry * ry);
+                d1 = d1 + dx + (ry * ry);
+            } else {
+                x++;
+                y--;
+                dx += (2 * ry * ry);
+                dy -= (2 * rx * rx);
+                d1 = d1 + dx - dy + (ry * ry);
+            }
+        }
+
+        d2 = ((ry * ry) * ((x + 0.5) * (x + 0.5)))
+    + ((rx * rx) * ((y - 1) * (y - 1)))
+    - (rx * rx * ry * ry);
+
+        while (y >= 0) {
+            console.log(`${x + xc},`, y + yc);
+            console.log(`${-x + xc},`, y + yc);
+            console.log(`${x + xc},`, -y + yc);
+            console.log(`${-x + xc},`, -y + yc);
+            ctx.fillRect(x + xc, y + yc, 1, 1);
+            ctx.fillRect(-x + xc, y + yc, 1, 1);
+            ctx.fillRect(x + xc, -y + yc, 1, 1);
+            ctx.fillRect(-x + xc, -y + yc, 1, 1);
+
+            if (d2 > 0) {
+                y--;
+                dy -= (2 * rx * rx);
+                d2 = d2 + (rx * rx) - dy;
+            } else {
+                y--;
+                x++;
+                dx += (2 * ry * ry);
+                dy -= (2 * rx * rx);
+                d2 = d2 + dx - dy + (rx * rx);
+            }
+        }
+    }
+
+
     clearCanvas() {
         const canvas = this.canvas.current.getBoundingClientRect();
         const ctx = this.canvas.current.getContext('2d');
@@ -260,6 +322,12 @@ class CircleDrawer extends PureComponent {
                       onClick={ () => this.clearCanvas() }
                     >
                     Clear canvas
+                    </button>
+                    <button
+                      className="drawbtn"
+                      onClick={ () => this.drawellispe(3, 8, 0, 0) }
+                    >
+                        ellipse
                     </button>
                 </div>
             </>
