@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import BezierDrawer from './Components/BezierDrawer';
+import FigureDrawer from './Components/FigureDrawer';
 
-ReactDOM.render(<BezierDrawer />, document.getElementById('root'));
+ReactDOM.render(<FigureDrawer />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
